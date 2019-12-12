@@ -1,29 +1,60 @@
-#######################################
-# Syntax Coloring Map for NewSoftSerial
-#######################################
+// the number of readings from the analog input
+  int readings[numReadings];
+// the readings from the analog input
+  int anglereadings[numReadings];
+// the readings from the analog input
+  int readIndex = 0;
+// the index of the current reading
+  int total = 0;
+// the running total
+  int angletotal = 0;
+// the running total
+  int average = 0;
+// the average
 
-#######################################
-# Datatypes (KEYWORD1)
-#######################################
-
-NewSoftSerial	KEYWORD1
-
-#######################################
-# Methods and Functions (KEYWORD2)
-#######################################
-
-begin	KEYWORD2
-end	KEYWORD2
-read	KEYWORD2
-available	KEYWORD2
-is_listening	KEYWORD2
-overflow	KEYWORD2
-library_version	KEYWORD2
-enable_timer0	KEYWORD2
-flush	KEYWORD2
-listen	KEYWORD2
-
-#######################################
-# Constants (LITERAL1)
-#######################################
-
+  int v = 0;
+  unsigned int offset = 0;      
+//side of 8 digit display 0 left, 4 right 
+#define DataIn 5
+#define LOAD 6
+#define CLK 7
+#define MAX7219 2
+  
+  int anglePin = A0;
+  int speedPin = A5;   
+// wiper on angle sensor connected to analog pin 0
+// speed sensor connected to analog pin 1
+  float WindAngle  = 0.0;
+  float WindSpeed = 0.0;
+  String windir="";
+  float appangle= 0.0;
+  unsigned int angleValue = 0.0;
+  unsigned int speedValue = 0.0;
+  unsigned int Speed=0;
+  unsigned int angle=100;
+#define AngleCal -17.00
+#define SpeedCal 2.000           
+// Calibration addition wind angle sensor *10 
+// Calibration multiplier wind speed sensor *10
+  
+  String Wind = "";
+  String InNMEA = "";
+  String Checksum ="";
+#define WindSpeedUnit "N,"    
+// unit for display N = Nautical Miles
+#define  outRX 8
+// nmea RX + pin 8
+#define outTX 9
+// nmea TX + pin 9 
+#define interval 100
+// interval at which to send NMEA Wind (milliseconds)
+  unsigned long previousMillis = 0;     // will store last time NMEA Wind sent
+  unsigned long currentMillis =  0;
+  
+  unsigned int led=2;
+  unsigned int LEDIntensity=3;
+  unsigned int ones=0;
+  unsigned int tens=0;
+  unsigned int hundreds=0;
+  unsigned int tenths=0;
+  unsigned int digits=0;
